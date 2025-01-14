@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
             course: formData.get('course')
         };
 
-        const token = "YOUR_BOT_TOKEN";
-        const chatId = "YOUR_CHAT_ID";
+        const token = "7806926318:AAGaVEaRHLfg4H12JZbnxA6NHQyX_emuezw";
+        const chatId = "7518382960";
 
         const message = `
             F.I.O: ${data.fullName}
