@@ -1,67 +1,85 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.section');
+// Переменные Telegram
+const TELEGRAM_TOKEN = 'ВАШ_ТЕЛЕГРАМ_ТОКЕН';
+const TELEGRAM_CHAT_ID = 'ВАШ_ЧАТ_ID';
+
+// Ожидание загрузки DOM
+document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('.section');
+    const form = document.querySelector('#registrationForm');
+    const responseMessage = document.querySelector('#responseMessage');
 
-    // Показать первую секцию по умолчанию
-    sections[0].classList.add('active');
-    navLinks[0].classList.add('active');
-
-    // Обработка навигации
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+    // Переход по меню
+    navLinks.forEach((link) => {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
-            sections.forEach(section => section.classList.remove('active'));
-            navLinks.forEach(navLink => navLink.classList.remove('active'));
-            link.classList.add('active');
-            const targetId = link.getAttribute('href').substring(1);
-            document.getElementById(targetId).classList.add('active');
+            const targetId = this.getAttribute('href').slice(1);
+
+            sections.forEach((section) => {
+                section.classList.remove('active');
+                if (section.id === targetId) {
+                    section.classList.add('active');
+                }
+            });
+
+            navLinks.forEach((link) => link.classList.remove('active'));
+            this.classList.add('active');
         });
     });
 
-    // Отправка формы через Telegram Bot API
-    const form = document.getElementById('submissionForm');
-    form.addEventListener('submit', (e) => {
+    // Обработка формы
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        const formData = new FormData(form);
-        const data = {
-            fullName: formData.get('fullName'),
-            phone: formData.get('phone'),
-            school: formData.get('school'),
-            timeOfDay: formData.get('timeOfDay'),
-            knowledgeLevel: formData.get('knowledgeLevel'),
-            course: formData.get('course')
-        };
+        // Получение данных формы
+        const fullName = document.querySelector('#fullName').value.trim();
+        const phoneNumber = document.querySelector('#phoneNumber').value.trim();
+        const schoolNumber = document.querySelector('#schoolNumber').value.trim();
+        const studyTime = document.querySelector('input[name="studyTime"]:checked').value;
+        const studentLevel = document.querySelector('#studentLevel').value;
+        const subject = document.querySelector('#subject').value;
 
-        const token = "7806926318:AAGaVEaRHLfg4H12JZbnxA6NHQyX_emuezw";
-        const chatId = "7518382960";
+        // Проверка заполнения
+        if (!fullName || !phoneNumber || !schoolNumber) {
+            alert('Пожалуйста, заполните все обязательные поля.');
+            return;
+        }
 
+        // Формирование сообщения для Telegram
         const message = `
-            F.I.O: ${data.fullName}
-            Telefon: ${data.phone}
-            Maktab: ${data.school}
-            Vaqt: ${data.timeOfDay}
-            Bilim darajasi: ${data.knowledgeLevel}
-            Kurs: ${data.course}
+            📝 Новая заявка:
+            👤 ФИО: ${fullName}
+            📞 Телефон: ${phoneNumber}
+            🏫 Номер школы: ${schoolNumber}
+            ⏰ Время занятий: ${studyTime}
+            📚 Уровень знаний: ${studentLevel}
+            🖋️ Предмет: ${subject}
         `;
 
-        fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        // Отправка данных в Telegram
+        fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify({
-                chat_id: chatId,
-                text: message
+                chat_id: TELEGRAM_CHAT_ID,
+                text: message,
+            }),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    // Сообщение об успешной отправке
+                    responseMessage.textContent = 'Ваша заявка успешно отправлена!';
+                    responseMessage.style.display = 'block';
+                    form.reset();
+                } else {
+                    alert('Ошибка при отправке данных. Попробуйте снова.');
+                }
             })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.ok) {
-                alert('Hujjat yuborildi!');
-                form.reset();
-            } else {
-                alert('Xato yuz berdi.');
-            }
-        })
-        .catch(err => console.error(err));
+            .catch((error) => {
+                console.error('Ошибка:', error);
+                alert('Ошибка при подключении к серверу Telegram.');
+            });
     });
 });
