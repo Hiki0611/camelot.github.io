@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Формируем сообщение для Telegram
         const message = `
-            📝 *Yangi Ariza:*
+            📝 *Camelot Dasturidan yangi Ariza:*
             👤 *F.I.SH:* ${fullName}
             🪪 *ID carta:* ${CARD}
             📞 *Telefon raqam:* ${phone}
