@@ -1,6 +1,6 @@
 // Переменные Telegram
-const TELEGRAM_TOKEN = '7806926318:AAGaVEaRHLfg4H12JZbnxA6NHQyX_emuezw'; // Замените на ваш реальный токен
-const TELEGRAM_CHAT_ID = '7518382960'; // Замените на ваш реальный ID чата
+const TELEGRAM_TOKEN = '7806926318:AAGaVEaRHLfg4H12JZbnxA6NHQyX_emuezw';
+const TELEGRAM_CHAT_ID = '7518382960';
 
 // Ожидание загрузки DOM
 document.addEventListener('DOMContentLoaded', function () {
@@ -45,27 +45,36 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Формирование данных для отправки
-        const formData = {
-            fullName,
-            phone,
-            school,
-            timeOfDay,
-            knowledgeLevel,
-            course
-        };
+        // Формирование сообщения для Telegram
+        const message = `
+            📝 Новая заявка:
+            👤 ФИО: ${fullName}
+            📞 Телефон: ${phone}
+            🏫 Мектеп: ${school}
+            ⏰ Время занятий: ${timeOfDay}
+            📚 Уровень знаний: ${knowledgeLevel}
+            🖋️ Предмет: ${course}
+        `;
 
-        // Отправка данных в Google Apps Script
-        fetch('https://script.google.com/macros/s/AKfycbz490875hSv7D-gBX6EfpAebDR57pS337qklIW7eEukdlHlEM-eJaaErSnQURnIArH5Rw/exec', {
+        // Отправка данных на Google Apps Script
+        fetch('https://script.google.com/macros/s/AKfycbxEUUWdZYJT_VJw51nCqYDPHiWYiQRAyS0wntErNGrQYbLDJ6EYxAVZBPVD8G9gcSxafA/exec', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formData),
+            body: JSON.stringify({
+                fullName: fullName,
+                phone: phone,
+                school: school,
+                timeOfDay: timeOfDay,
+                knowledgeLevel: knowledgeLevel,
+                course: course
+            })
         })
-        .then((response) => {
-            if (response.ok) {
-                // Сообщение об успешной отправке
+        .then(response => response.json())
+        .then(data => {
+            // Проверка успешного ответа от сервера
+            if (data.status === "OK") {
                 responseMessage.textContent = 'Ваша заявка успешно отправлена!';
                 responseMessage.style.display = 'block';
                 form.reset();
@@ -73,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('Ошибка при отправке данных. Попробуйте снова.');
             }
         })
-        .catch((error) => {
+        .catch(error => {
             console.error('Ошибка:', error);
             alert('Ошибка при подключении к серверу.');
         });
