@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         // Отправка данных в Google Apps Script
-        fetch('https://script.google.com/macros/s/AKfycbxy2ikYYdxfjw33bwFwZA_Bkovuf225lgxlCH2jk15GQA1lslDemxImO5dQ179eu9S_mQ/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbz490875hSv7D-gBX6EfpAebDR57pS337qklIW7eEukdlHlEM-eJaaErSnQURnIArH5Rw/exec', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
