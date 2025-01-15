@@ -1,6 +1,6 @@
 // Переменные Telegram
 const TELEGRAM_TOKEN = '7806926318:AAGaVEaRHLfg4H12JZbnxA6NHQyX_emuezw';
-const TELEGRAM_CHAT_ID = '7518382960';
+const TELEGRAM_CHAT_ID = '7806926318';
 
 // Ожидание загрузки DOM
 document.addEventListener('DOMContentLoaded', function () {
