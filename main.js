@@ -1,12 +1,12 @@
 // Переменные Telegram
-const TELEGRAM_TOKEN = 'ВАШ_ТЕЛЕГРАМ_ТОКЕН';
-const TELEGRAM_CHAT_ID = 'ВАШ_ЧАТ_ID';
+const TELEGRAM_TOKEN = '7806926318:AAGaVEaRHLfg4H12JZbnxA6NHQyX_emuezw'; // Замените на ваш реальный токен
+const TELEGRAM_CHAT_ID = '7518382960'; // Замените на ваш реальный ID чата
 
 // Ожидание загрузки DOM
 document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('.nav-links a');
     const sections = document.querySelectorAll('.section');
-    const form = document.querySelector('#registrationForm');
+    const form = document.querySelector('#documentForm');
     const responseMessage = document.querySelector('#responseMessage');
 
     // Переход по меню
@@ -33,53 +33,49 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Получение данных формы
         const fullName = document.querySelector('#fullName').value.trim();
-        const phoneNumber = document.querySelector('#phoneNumber').value.trim();
-        const schoolNumber = document.querySelector('#schoolNumber').value.trim();
-        const studyTime = document.querySelector('input[name="studyTime"]:checked').value;
-        const studentLevel = document.querySelector('#studentLevel').value;
-        const subject = document.querySelector('#subject').value;
+        const phone = document.querySelector('#phone').value.trim();
+        const school = document.querySelector('#school').value.trim();
+        const timeOfDay = document.querySelector('#timeOfDay').value;
+        const knowledgeLevel = document.querySelector('#knowledgeLevel').value;
+        const course = document.querySelector('#course').value;
 
         // Проверка заполнения
-        if (!fullName || !phoneNumber || !schoolNumber) {
+        if (!fullName || !phone || !school) {
             alert('Пожалуйста, заполните все обязательные поля.');
             return;
         }
 
-        // Формирование сообщения для Telegram
-        const message = `
-            📝 Новая заявка:
-            👤 ФИО: ${fullName}
-            📞 Телефон: ${phoneNumber}
-            🏫 Номер школы: ${schoolNumber}
-            ⏰ Время занятий: ${studyTime}
-            📚 Уровень знаний: ${studentLevel}
-            🖋️ Предмет: ${subject}
-        `;
+        // Формирование данных для отправки
+        const formData = {
+            fullName,
+            phone,
+            school,
+            timeOfDay,
+            knowledgeLevel,
+            course
+        };
 
-        // Отправка данных в Telegram
-        fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+        // Отправка данных в Google Apps Script
+        fetch('https://script.google.com/macros/s/AKfycbxy2ikYYdxfjw33bwFwZA_Bkovuf225lgxlCH2jk15GQA1lslDemxImO5dQ179eu9S_mQ/exec', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                chat_id: TELEGRAM_CHAT_ID,
-                text: message,
-            }),
+            body: JSON.stringify(formData),
         })
-            .then((response) => {
-                if (response.ok) {
-                    // Сообщение об успешной отправке
-                    responseMessage.textContent = 'Ваша заявка успешно отправлена!';
-                    responseMessage.style.display = 'block';
-                    form.reset();
-                } else {
-                    alert('Ошибка при отправке данных. Попробуйте снова.');
-                }
-            })
-            .catch((error) => {
-                console.error('Ошибка:', error);
-                alert('Ошибка при подключении к серверу Telegram.');
-            });
+        .then((response) => {
+            if (response.ok) {
+                // Сообщение об успешной отправке
+                responseMessage.textContent = 'Ваша заявка успешно отправлена!';
+                responseMessage.style.display = 'block';
+                form.reset();
+            } else {
+                alert('Ошибка при отправке данных. Попробуйте снова.');
+            }
+        })
+        .catch((error) => {
+            console.error('Ошибка:', error);
+            alert('Ошибка при подключении к серверу.');
+        });
     });
 });
