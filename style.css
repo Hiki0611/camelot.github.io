@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.FREE {
+    color: #4a90e2;
+}
+
 :root {
     --primary-color: #4a90e2;
     --secondary-color: #f39c12;
