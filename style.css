@@ -10,9 +10,9 @@
 
 :root {
     --primary-color: #4a90e2;
-    --secondary-color: #f39c12;
+    --secondary-color: #00ffea;
     --accent-color: #e74c3c;
-    --background-color: #f5f6fa;
+    --background-color: #ffffff;
     --text-color: #2c3e50;
 }
 
@@ -86,9 +86,9 @@ main {
     display: none;
     margin-bottom: 2rem;
     padding: 2rem;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(1, 225, 255, 0.534);
     animation: fadeIn 0.5s ease;
 }
 
@@ -182,7 +182,7 @@ form button:hover {
     background: linear-gradient(135deg, white, #f8f9fa);
     padding: 1.5rem;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 221, 255, 0.658);
     transition: all 0.3s ease;
     border: 2px solid transparent;
 }
