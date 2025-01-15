@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Получение данных формы
         const fullName = document.querySelector('#fullName').value.trim();
+        const CARD = document.querySelector('#CARD').value.trim();
         const phone = document.querySelector('#phone').value.trim();
         const school = document.querySelector('#school').value.trim();
         const timeOfDay = document.querySelector('#timeOfDay').value;
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const message = `
             📝 *Yangi Ariza:*
             👤 *F.I.SH:* ${fullName}
+            🪪 *ID carta:* ${CARD}
             📞 *Telefon raqam:* ${phone}
             🏫 *Maktab:* ${school}
             ⏰ *Dars vaqti:* ${timeOfDay}
@@ -80,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             })
             .catch((error) => {
-                console.error('Ошибка:', error);
+                console.error('Xatolik:', error);
                 alert('Telegram serveriga qushilish mavjud emas!');
             });
     });
