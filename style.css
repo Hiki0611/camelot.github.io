@@ -30,6 +30,16 @@ body {
     z-index: 1000;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     height: auto;
+    flex-wrap: wrap;
+}
+
+.navbar .brand {
+    text-align: center;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    flex: 1;
 }
 
 .nav-links {
@@ -38,6 +48,8 @@ body {
     gap: 0.5rem;
     margin: 0;
     padding: 0;
+    justify-content: center;
+    width: 100%;
 }
 
 .nav-links a {
@@ -190,6 +202,11 @@ form button:hover {
 @media (max-width: 768px) {
     .navbar {
         padding: 0.5rem;
+    }
+
+    .navbar .brand {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
     }
 
     .nav-links a {
