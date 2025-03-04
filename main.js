@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Получение данных формы
         const fullName = document.querySelector('#fullName').value.trim();
-        const CARD = document.querySelector('#CARD').value.trim();
         const phone = document.querySelector('#phone').value.trim();
         const school = document.querySelector('#school').value.trim();
         const timeOfDay = document.querySelector('#timeOfDay').value;
@@ -51,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const message = `
             📝 *Camelot Dasturidan yangi Ariza:*
             👤 *F.I.SH:* ${fullName}
-            🪪 *ID carta:* ${CARD}
             📞 *Telefon raqam:* ${phone}
             🏫 *Maktab:* ${school}
             ⏰ *Dars vaqti:* ${timeOfDay}
