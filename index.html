@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camelot Akademiyasi</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Навбар -->
+    <nav class="navbar">
+        <div class="logo">Camelot Akademiyasi</div>
+        <div class="nav-controls">
+            <button class="theme-toggle" aria-label="Mavzuni almashtirish">
+                <span class="sun-icon">☀️</span>
+                <span class="moon-icon">🌙</span>
+            </button>
+            <button class="lang-toggle" aria-label="Tilni almashtirish">
+                <span class="lang-icon"></span>
+                <span class="lang-text">EN </span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Плавающая кнопка звонка -->
+    <a href="tel:+998901234567" class="floating-call-btn">Qo'ng'iroq qilish</a>
+
+    <!-- Bosh sahifa -->
+    <section id="home" class="section">
+        <div class="bg-animation"></div>
+        <div class="hero">
+            <h1>Camelot Akademiyasiga xush kelibsiz!</h1>
+            <p>Ingliz, arab va kimyo fanlarini eng yaxshi o'qituvchilar bilan o'rganing!</p>
+            <div class="slider">
+                <div class="slider-container"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O'qituvchilar -->
+    <section id="teachers" class="section">
+        <h2>Bizning o'qituvchilarimiz</h2>
+        <div class="teachers-container"></div>
+    </section>
+
+    <!-- Kurslar -->
+    <section id="courses" class="section">
+        <h2>Kurslarimiz</h2>
+        <div class="courses-container"></div>
+    </section>
+
+    <!-- Yutuqlar -->
+    <section id="achievements" class="section">
+        <h2>O'quvchilarimiz yutuqlari</h2>
+        <div class="achievements-container"></div>
+    </section>
+
+    <!-- Fikrlar -->
+    <section id="reviews" class="section">
+        <h2>O'quvchilarimiz fikrlari</h2>
+        <div class="reviews-container"></div>
+    </section>
+
+    <!-- Ro'yxatdan o'tish -->
+    <section id="contacts" class="section">
+        <h2>Ro'yxatdan o'tish</h2>
+        <form class="contact-form" id="contact-form">
+            <input type="text" name="fio" placeholder="FIO" required>
+            <input type="text" name="school" placeholder="Maktab raqami" required>
+            <input type="number" name="birthYear" placeholder="Tug'ilgan yil" required min="1900" max="2025">
+            <input type="tel" name="phone" placeholder="Telefon raqami" required>
+            <select name="course" required>
+                <option value="">Kurs tanlang</option>
+                <option value="english">Ingliz tili</option>
+                <option value="arabic">Arab tili</option>
+                <option value="chemistry">Kimyo</option>
+            </select>
+            <button type="submit" class="neon-button">Yuborish</button>
+        </form>
+    </section>
+
+    <!-- Плавающее уведомление -->
+    <div class="notification" id="notification">
+        <p>Ma'lumotlaringiz akademiyaga yuborildi! Tez orada sizga qo'ng'iroq qilamiz.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

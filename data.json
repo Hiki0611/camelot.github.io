@@ -1,0 +1,97 @@
+{
+    "teachers": [
+        {
+            "name": "Gulnoza Rahimova",
+            "subject": "Ingliz tili",
+            "skills": "IELTS tayyorlov, fonetika, suhbat",
+            "certificates": "CELTA, IELTS 8.5",
+            "photo": "images/tchw1.webp"
+        },
+        {
+            "name": "Abdulloh Qodirov",
+            "subject": "Arab tili",
+            "skills": "Klassik arabcha, dialektlar, tarjim",
+            "certificates": "ALPT Level 5",
+            "photo": "images/tch1.webp"
+        },
+        {
+            "name": "Sardor Rahimov",
+            "subject": "Kimyo",
+            "skills": "Organik kimyo, tajribalar, olimpiada",
+            "certificates": "PhD in Chemistry",
+            "photo": "images/tch3.jpg"
+        }
+    ],
+    "courses": [
+        {
+            "name": "Ingliz tili",
+            "level": "Boshlang'ich",
+            "schedule": "Dushanba, Chorshanba 18:00-20:00",
+            "groups": "10-12 kishi",
+            "price": "500000",
+            "teacher": "Gulnoza Rahimova",
+            "duration": "3 oy",
+            "lessons": "24 dars"
+        },
+        {
+            "name": "Arab tili",
+            "level": "O'rta",
+            "schedule": "Seshanba, Payshanba 17:00-19:00",
+            "groups": "8-10 kishi",
+            "price": "600000",
+            "teacher": "Abdulloh Qodirov",
+            "duration": "4 oy",
+            "lessons": "32 dars"
+        },
+        {
+            "name": "Kimyo",
+            "level": "Yuqori",
+            "schedule": "Juma, Shanba 16:00-18:00",
+            "groups": "6-8 kishi",
+            "price": "700000",
+            "teacher": "Zarina Sobirova",
+            "duration": "5 oy",
+            "lessons": "40 dars"
+        }
+    ],
+    "achievements": [
+        {
+            "student": "Jasurbek",
+            "success": "IELTS 8.0",
+            "certificate": "IELTS",
+            "year": "2024",
+            "photo": "images/cer1.jpg"
+        },
+        {
+            "student": "Madina",
+            "success": "Arab tili olimpiada g'olibi",
+            "certificate": "CEFR B2",
+            "year": "2023",
+            "photo": "images/cer2.webp"
+        },
+        {
+            "student": "Shohruh",
+            "success": "Kimyo bo'yicha xalqaro mukofot",
+            "certificate": "Advanced Chemistry",
+            "year": "2025",
+            "photo": "images/cer3.jpg"
+        }
+    ],
+    "reviews": [
+        {
+            "name": "Oybek",
+            "text": "Ingliz tilini oson va tez o'rgandim, rahmat!",
+            "photo": "images/s1.webp"
+        },
+        {
+            "name": "Javohir",
+            "text": "Kimyo kurslari ajoyib, tajribalar juda qiziqarli!",
+            "photo": "images/s2.webp"
+        },
+        {
+            "name": "Farruh",
+            "text": "Arab tilini noldan boshlab mukammal o'rgandim!",
+            "photo": "images/s3.webp"
+        }
+    ]
+}
